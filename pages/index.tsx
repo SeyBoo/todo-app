@@ -1,10 +1,13 @@
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import React from "react";
-import Nav from "../common/components/Nav";
+import ItemsList from "../module/todo/component/itemsList";
+import BaseLayout from "../common/layout/baseLayout";
 
 const Home: NextPage = () => {
   return (
-      <Nav />
+      <BaseLayout>
+         <p>Hello World!</p>
+      </BaseLayout>
   );
 }
 
