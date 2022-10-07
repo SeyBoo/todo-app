@@ -28,4 +28,12 @@ export default class DummyTodo implements TodoBackend {
 
     return todos;
   }
+
+  async clearCompleted() : Promise<Todo[]> {
+    const todos =  todoDummy.filter(todo => !todo.completed)
+
+    todoDummy = todos;
+
+    return todos;
+  }
 }

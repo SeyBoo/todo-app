@@ -26,3 +26,11 @@ export const changeTodoStatus = (currentTodo: Todo): AppThunk => (
       await dispatch(setTodo({todo}));
     }
 )
+
+export const clearCompleted = (): AppThunk => (
+    async dispatch => {
+      const backendInstance = await getTodoBackend();
+      const todo = await backendInstance.clearCompleted();
+      await dispatch(setTodo({todo}));
+    }
+)
