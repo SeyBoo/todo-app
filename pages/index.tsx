@@ -6,7 +6,7 @@ import BaseLayout from "../common/layout/baseLayout";
 const Home: NextPage = () => {
   return (
       <BaseLayout>
-         <p>Hello World!</p>
+        <ItemsList/>
       </BaseLayout>
   );
 }

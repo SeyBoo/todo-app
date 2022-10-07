@@ -9,8 +9,12 @@ interface setTodoPayload {
 const TodoSlice = createSlice({
   initialState,
   name: 'Todo',
-  reducers: {},
+  reducers: {
+    setTodo(state, action: PayloadAction<setTodoPayload>) {
+      state.todo = action.payload.todo;
+    },
   }
 })
 
+export const {setTodo} = TodoSlice.actions;
 export default TodoSlice;
