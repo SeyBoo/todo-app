@@ -3,6 +3,8 @@ import Image from "next/image";
 import IconClose from '../../../common/assets/icon-cross.svg';
 import IconCross from '../../../common/assets/icon-check.svg';
 import {Todo} from "../../../common/types/todo.interface";
+import {removeTodo} from "../store/thunk";
+import {useAppDispatch} from "../../../common/hooks/useStore";
 
 interface ItemCardProps {
   todo: Todo;
@@ -13,6 +15,8 @@ const ItemCard: FunctionComponent<ItemCardProps> = (
         todo
     }
 ) => {
+  const dispatch = useAppDispatch();
+
   const renderStatusButton = useCallback(() => {
     const defaultStyling = 'w-7 h-7 border rounded-full';
 
@@ -42,13 +46,21 @@ const ItemCard: FunctionComponent<ItemCardProps> = (
     )
   }, [todo.completed])
 
+  const handleRemoveTodo = async () => {
+    try {
+      await dispatch(removeTodo(todo.uuid));
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return (
       <div className="flex justify-between items-center p-5 border-b">
         <div className="flex align-middle">
           {renderStatusButton()}
           {renderName()}
         </div>
-        <button>
+        <button onClick={() => handleRemoveTodo()}>
           <Image src={IconClose} alt="IconClose" width={18} height={18}/>
         </button>
       </div>

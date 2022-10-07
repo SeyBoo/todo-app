@@ -2,6 +2,8 @@ import {Todo} from "../../../common/types/todo.interface";
 
 export interface TodoBackend {
   loadTodo() : Promise<Todo[]>
+
+  removeTodo(uuid: string): Promise<Todo[]>;
 }
 
 let todoBackendInstance : TodoBackend | undefined = undefined;
