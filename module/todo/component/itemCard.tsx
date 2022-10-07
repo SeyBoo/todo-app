@@ -3,7 +3,7 @@ import Image from "next/image";
 import IconClose from '../../../common/assets/icon-cross.svg';
 import IconCross from '../../../common/assets/icon-check.svg';
 import {Todo} from "../../../common/types/todo.interface";
-import {removeTodo} from "../store/thunk";
+import {removeTodo, changeTodoStatus} from "../store/thunk";
 import {useAppDispatch} from "../../../common/hooks/useStore";
 
 interface ItemCardProps {
@@ -19,6 +19,14 @@ const ItemCard: FunctionComponent<ItemCardProps> = (
 
   const renderStatusButton = useCallback(() => {
     const defaultStyling = 'w-7 h-7 border rounded-full';
+
+    const handleChangeTodoStatus = async () => {
+      try {
+        await dispatch(changeTodoStatus(todo));
+      } catch (e) {
+        console.error(e);
+      }
+    }
 
     if (todo.completed) {
       return (

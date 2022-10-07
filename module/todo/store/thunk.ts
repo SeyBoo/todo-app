@@ -18,3 +18,11 @@ export const removeTodo = (uuid: string): AppThunk => (
       await dispatch(setTodo({todo}));
     }
 )
+
+export const changeTodoStatus = (currentTodo: Todo): AppThunk => (
+    async dispatch => {
+      const backendInstance = await getTodoBackend();
+      const todo = await backendInstance.changeTodoStatus(currentTodo);
+      await dispatch(setTodo({todo}));
+    }
+)

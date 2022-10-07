@@ -4,6 +4,8 @@ export interface TodoBackend {
   loadTodo() : Promise<Todo[]>
 
   removeTodo(uuid: string): Promise<Todo[]>;
+
+  changeTodoStatus(currentTodo: Todo): Promise<Todo[]>;
 }
 
 let todoBackendInstance : TodoBackend | undefined = undefined;
