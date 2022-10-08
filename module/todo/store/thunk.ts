@@ -42,3 +42,21 @@ export const addNewTodo = (content: string): AppThunk => (
       await dispatch(setTodo({todo}));
     }
 )
+
+export const loadActiveTodo = (): AppThunk => (
+    async dispatch => {
+      const backendInstance = await getTodoBackend();
+      const todo = await backendInstance.loadTodo();
+      const filteredTodo = todo.filter(todo => !todo.completed)
+      await dispatch(setTodo({todo: filteredTodo}));
+    }
+)
+
+export const loadCompletedTodo = (): AppThunk => (
+    async dispatch => {
+      const backendInstance = await getTodoBackend();
+      const todo = await backendInstance.loadTodo();
+      const filteredTodo = todo.filter(todo => todo.completed)
+      await dispatch(setTodo({todo: filteredTodo}));
+    }
+)

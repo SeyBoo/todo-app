@@ -2,6 +2,7 @@ import type {NextPage} from 'next'
 import React from "react";
 import ItemsList from "../module/todo/component/itemsList";
 import BaseLayout from "../common/layout/baseLayout";
+import StatusFilter from "../module/todo/component/statusFilter";
 import AddNewToDo from "../module/todo/component/addNewToDo";
 
 const Home: NextPage = () => {
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
       <BaseLayout>
         <AddNewToDo />
         <ItemsList/>
+        <StatusFilter />
       </BaseLayout>
   );
 }
