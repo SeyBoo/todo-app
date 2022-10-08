@@ -2,6 +2,7 @@ import React, {FunctionComponent, useCallback, useEffect} from "react";
 import ItemCard from "./itemCard";
 import {useAppDispatch, useAppSelector} from "../../../common/hooks/useStore";
 import {clearCompleted, loadTodos} from "../store/thunk";
+import AddNewToDo from "./addNewToDo";
 
 const ItemsList: FunctionComponent = () => {
   const todo = useAppSelector(state => state.Todo.todo);

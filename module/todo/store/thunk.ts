@@ -34,3 +34,11 @@ export const clearCompleted = (): AppThunk => (
       await dispatch(setTodo({todo}));
     }
 )
+
+export const addNewTodo = (content: string): AppThunk => (
+    async dispatch => {
+      const backendInstance = await getTodoBackend();
+      const todo = await backendInstance.addNewTodo(content);
+      await dispatch(setTodo({todo}));
+    }
+)

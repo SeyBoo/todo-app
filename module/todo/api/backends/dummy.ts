@@ -36,4 +36,15 @@ export default class DummyTodo implements TodoBackend {
 
     return todos;
   }
+
+  async addNewTodo(content: string): Promise<Todo[]> {
+    const newTodo: Todo = {
+      content,
+      uuid: '',
+      completed: false,
+    }
+
+    todoDummy = [...todoDummy, newTodo];
+    return todoDummy;
+  }
 }

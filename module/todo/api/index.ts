@@ -8,6 +8,8 @@ export interface TodoBackend {
   changeTodoStatus(currentTodo: Todo): Promise<Todo[]>;
 
   clearCompleted() : Promise<Todo[]>;
+
+  addNewTodo(content: string) : Promise<Todo[]>;
 }
 
 let todoBackendInstance : TodoBackend | undefined = undefined;
