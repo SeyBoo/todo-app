@@ -26,7 +26,7 @@ const ItemsList: FunctionComponent = () => {
   }, [dispatch]);
 
   return (
-      <ol className="-mt-10 z-50 relative w-[90%] m-auto bg-[#fff] rounded-lg shadow-md">
+      <ol className="z-50 relative bg-[#fff] rounded-lg shadow-md">
         {todo?.map(todo =>
             <ItemCard
                 key={todo.uuid}

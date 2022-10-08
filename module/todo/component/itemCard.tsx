@@ -42,15 +42,14 @@ const ItemCard: FunctionComponent<ItemCardProps> = (
   }, [todo.completed])
 
   const renderName = useCallback(() => {
-    const defaultStyling = 'ml-4';
     if (todo.completed) {
       return (
-          <p className={`${defaultStyling} line-through opacity-30`}>{todo.content}</p>
+          <p className="line-through opacity-30">{todo.content}</p>
       )
     }
 
     return (
-        <p className={defaultStyling}>{todo.content}</p>
+        <p>{todo.content}</p>
     )
   }, [todo.completed])
 
@@ -64,7 +63,7 @@ const ItemCard: FunctionComponent<ItemCardProps> = (
 
   return (
       <div className="flex justify-between items-center p-5 border-b">
-        <div className="flex align-middle">
+        <div className="flex align-middle gap-4">
           {renderStatusButton()}
           {renderName()}
         </div>
