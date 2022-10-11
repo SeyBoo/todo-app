@@ -1,23 +1,23 @@
-import {Todo} from "../../../common/types/todo.interface";
+import { Todo } from "../../../common/types/todo.interface";
 
 export interface TodoBackend {
-  loadTodo() : Promise<Todo[]>
+	loadTodo(): Promise<Todo[]>;
 
-  removeTodo(uuid: string): Promise<Todo[]>;
+	removeTodo(uuid: string): Promise<Todo[]>;
 
-  changeTodoStatus(currentTodo: Todo): Promise<Todo[]>;
+	changeTodoStatus(currentTodo: Todo): Promise<Todo[]>;
 
-  clearCompleted() : Promise<Todo[]>;
+	clearCompleted(): Promise<Todo[]>;
 
-  addNewTodo(content: string) : Promise<Todo[]>;
+	addNewTodo(content: string): Promise<Todo[]>;
 }
 
-let todoBackendInstance : TodoBackend | undefined = undefined;
+let todoBackendInstance: TodoBackend | undefined = undefined;
 
 export async function getTodoBackend(): Promise<TodoBackend> {
-  if (todoBackendInstance === undefined) {
-    const mod = await import('./backends/' + 'dummy');
-    todoBackendInstance = new mod.default() as TodoBackend;
-  }
-  return todoBackendInstance;
+	if (todoBackendInstance === undefined) {
+		const mod = await import("./backends/" + "dummy");
+		todoBackendInstance = new mod.default() as TodoBackend;
+	}
+	return todoBackendInstance;
 }

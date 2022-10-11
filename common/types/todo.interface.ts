@@ -1,5 +1,5 @@
 export interface Todo {
-  uuid: string;
-  content: string;
-  completed: boolean;
+	uuid: string;
+	content: string;
+	completed: boolean;
 }
