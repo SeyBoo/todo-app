@@ -4,6 +4,7 @@ import React, {
 	PropsWithChildren,
 	useState,
 	useEffect,
+	FunctionComponent,
 } from 'react';
 
 type themes = 'light' | 'dark';
