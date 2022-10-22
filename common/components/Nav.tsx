@@ -3,48 +3,48 @@ import React, {
 	useCallback,
 	useEffect,
 	useState,
-} from "react";
-import BgMobileLight from "../assets/bg-mobile-light.jpg";
-import BgMobileDark from "../assets/bg-mobile-dark.jpg";
-import BgDesktopDark from "../assets/bg-desktop-dark.jpg";
-import BgDesktopLight from "../assets/bg-desktop-light.jpg";
-import LightMoon from "../assets/icon-moon.svg";
-import SunDark from "../assets/icon-sun.svg";
-import Image from "next/image";
+} from 'react';
+import BgMobileLight from '../assets/bg-mobile-light.jpg';
+import BgMobileDark from '../assets/bg-mobile-dark.jpg';
+import BgDesktopDark from '../assets/bg-desktop-dark.jpg';
+import BgDesktopLight from '../assets/bg-desktop-light.jpg';
+import LightMoon from '../assets/icon-moon.svg';
+import SunDark from '../assets/icon-sun.svg';
+import Image from 'next/image';
 
-type theme = "light" | "dark";
+type theme = 'light' | 'dark';
 const Nav: FunctionComponent = () => {
-	const [theme, setTheme] = useState<theme>("light");
+	const [theme, setTheme] = useState<theme>('light');
 
 	useEffect(() => {
-		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-			document.documentElement.classList.add("dark");
-			setTheme("dark");
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			document.documentElement.classList.add('dark');
+			setTheme('dark');
 		}
 	}, []);
 
 	useEffect(() => {
-		if (theme === "dark") {
-			document.documentElement.classList.add("dark");
-			setTheme("dark");
+		if (theme === 'dark') {
+			document.documentElement.classList.add('dark');
+			setTheme('dark');
 		} else {
-			document.documentElement.classList.remove("dark");
-			setTheme("light");
+			document.documentElement.classList.remove('dark');
+			setTheme('light');
 		}
 	}, [theme]);
 
 	const renderButton = useCallback(() => {
-		if (theme === "dark") {
+		if (theme === 'dark') {
 			return (
-				<button onClick={() => setTheme("light")}>
-					<Image src={SunDark} alt={""} />
+				<button onClick={() => setTheme('light')}>
+					<Image src={SunDark} alt={''} />
 				</button>
 			);
 		}
 
 		return (
-			<button onClick={() => setTheme("dark")}>
-				<Image src={LightMoon} alt={""} />
+			<button onClick={() => setTheme('dark')}>
+				<Image src={LightMoon} alt={''} />
 			</button>
 		);
 	}, [theme]);
@@ -61,13 +61,13 @@ const Nav: FunctionComponent = () => {
 				<div className="dark:hidden lg:hidden">
 					<Image src={BgMobileLight} layout="responsive" />
 				</div>
-				<div className={"hidden dark:block dark:lg:hidden"}>
+				<div className={'hidden dark:block dark:lg:hidden'}>
 					<Image src={BgMobileDark} layout="responsive" />
 				</div>
 				<div className="hidden lg:block dark:hidden">
 					<Image src={BgDesktopLight} layout="responsive" />
 				</div>
-				<div className={"hidden lg:dark:block"}>
+				<div className={'hidden lg:dark:block'}>
 					<Image src={BgDesktopDark} layout="responsive" />
 				</div>
 			</nav>

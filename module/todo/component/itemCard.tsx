@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useCallback } from "react";
-import Image from "next/image";
-import IconClose from "../../../common/assets/icon-cross.svg";
-import IconCross from "../../../common/assets/icon-check.svg";
-import { Todo } from "../../../common/types/todo.interface";
-import { removeTodo, changeTodoStatus } from "../store/thunk";
-import { useAppDispatch } from "../../../common/hooks/useStore";
+import React, { FunctionComponent, useCallback } from 'react';
+import Image from 'next/image';
+import IconClose from '../../../common/assets/icon-cross.svg';
+import IconCross from '../../../common/assets/icon-check.svg';
+import { Todo } from '../../../common/types/todo.interface';
+import { removeTodo, changeTodoStatus } from '../store/thunk';
+import { useAppDispatch } from '../../../common/hooks/useStore';
 
 interface ItemCardProps {
 	todo: Todo;
@@ -14,7 +14,7 @@ const ItemCard: FunctionComponent<ItemCardProps> = ({ todo }) => {
 	const dispatch = useAppDispatch();
 
 	const renderStatusButton = useCallback(() => {
-		const defaultStyling = "w-7 h-7 border rounded-full";
+		const defaultStyling = 'w-7 h-7 border rounded-full';
 
 		const handleChangeTodoStatus = async () => {
 			try {
@@ -30,7 +30,7 @@ const ItemCard: FunctionComponent<ItemCardProps> = ({ todo }) => {
 					className="w-7 h-7 border rounded-full bg-[#000]"
 					onClick={() => handleChangeTodoStatus()}
 				>
-					<Image src={IconCross} alt={"IconCross"} width={11} height={9} />
+					<Image src={IconCross} alt={'IconCross'} width={11} height={9} />
 				</button>
 			);
 		}

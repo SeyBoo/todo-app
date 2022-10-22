@@ -1,5 +1,5 @@
-import React, { FunctionComponent, PropsWithChildren } from "react";
-import Nav from "../components/Nav";
+import React, { FunctionComponent, PropsWithChildren } from 'react';
+import Nav from '../components/Nav';
 
 export const BaseLayout: FunctionComponent<PropsWithChildren> = ({
 	children,

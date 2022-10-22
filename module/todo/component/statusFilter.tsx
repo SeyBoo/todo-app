@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useCallback, useState } from "react";
-import { useAppDispatch } from "../../../common/hooks/useStore";
-import { loadActiveTodo, loadCompletedTodo, loadTodos } from "../store/thunk";
+import React, { FunctionComponent, useCallback } from 'react';
+import { useAppDispatch } from '../../../common/hooks/useStore';
+import { loadActiveTodo, loadCompletedTodo, loadTodos } from '../store/thunk';
 
 const StatusFilter: FunctionComponent = () => {
 	const dispatch = useAppDispatch();
@@ -37,27 +37,27 @@ const StatusFilter: FunctionComponent = () => {
 
 	const filter: filterItem[] = [
 		{
-			name: "All",
+			name: 'All',
 			active: true,
 			action: () => handleLoadAll(),
 		},
 		{
-			name: "Active",
+			name: 'Active',
 			active: false,
 			action: () => handleLoadActive(),
 		},
 		{
-			name: "Completed",
+			name: 'Completed',
 			active: false,
 			action: () => handleLoadCompleted(),
 		},
 	];
 
 	const renderButton = (item: filterItem, index: number) => {
-		let defaultStyling = "";
+		let defaultStyling = '';
 
 		if (item.active) {
-			defaultStyling = defaultStyling + "";
+			defaultStyling = defaultStyling + '';
 		}
 
 		return (

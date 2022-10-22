@@ -3,27 +3,25 @@ import React, {
 	FunctionComponent,
 	useCallback,
 	useState,
-} from "react";
-import { useAppDispatch } from "../../../common/hooks/useStore";
-import { addNewTodo } from "../store/thunk";
-import Image from "next/image";
-import IconCross from "../../../common/assets/icon-check.svg";
+} from 'react';
+import { useAppDispatch } from '../../../common/hooks/useStore';
+import { addNewTodo } from '../store/thunk';
 
 const AddNewToDo: FunctionComponent = () => {
-	const [todo, setTodo] = useState("");
+	const [todo, setTodo] = useState('');
 	const dispatch = useAppDispatch();
 
 	const handleCreateNewTodo = useCallback(
 		async (e: FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
 
-			if (todo == "") {
+			if (todo == '') {
 				return;
 			}
 
 			try {
 				await dispatch(addNewTodo(todo));
-				setTodo("");
+				setTodo('');
 			} catch (e) {
 				console.error(e);
 			}

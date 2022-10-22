@@ -1,11 +1,11 @@
-import {Todo} from "../../../common/types/todo.interface";
+import { Todo } from '../../../common/types/todo.interface';
 
 interface TodoState {
-  todo: null | Todo[];
+	todo: null | Todo[];
 }
 
 const initialState: TodoState = {
-  todo: null,
-}
+	todo: null,
+};
 
 export default initialState;

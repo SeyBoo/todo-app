@@ -1,6 +1,6 @@
-import { TodoBackend } from "../index";
-import { Todo } from "../../../../common/types/todo.interface";
-import { dummyData } from "./dummy-data";
+import { TodoBackend } from '../index';
+import { Todo } from '../../../../common/types/todo.interface';
+import { dummyData } from './dummy-data';
 
 let todoDummy = dummyData;
 
@@ -40,7 +40,7 @@ export default class DummyTodo implements TodoBackend {
 	async addNewTodo(content: string): Promise<Todo[]> {
 		const newTodo: Todo = {
 			content,
-			uuid: "",
+			uuid: '',
 			completed: false,
 		};
 
