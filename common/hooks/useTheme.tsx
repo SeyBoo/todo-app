@@ -10,7 +10,7 @@ import React, {
 type themes = 'light' | 'dark';
 
 type ThemeActions = {
-	useTheme: () => themes;
+	theme: () => themes;
 	changeTheme: () => void;
 };
 
