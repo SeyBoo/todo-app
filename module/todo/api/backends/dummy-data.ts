@@ -2,17 +2,17 @@ import { Todo } from '../../../../common/types/todo.interface';
 
 export const dummyData: Todo[] = [
 	{
-		content: 'Do push-up for an hour straight.',
+		content: 'Implement a simple backend',
 		completed: false,
 		uuid: 'uuid-0',
 	},
 	{
-		content: 'Ask her to make me dinner.',
+		content: 'Finish portfolio',
 		completed: false,
 		uuid: 'uuid-1',
 	},
 	{
-		content: 'Kill Lina.',
+		content: 'Complete todo-app',
 		completed: true,
 		uuid: 'uuid-3',
 	},
