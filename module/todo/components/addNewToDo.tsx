@@ -36,6 +36,7 @@ const AddNewToDo: FunctionComponent = () => {
 		>
 			<div
 				className="w-7 h-7 border border-[#979797] rounded-full bg-[#fff] dark:bg-[transparent] dark:border-[#393A4B]"
+				onClick={(e) => handleCreateNewTodo(e)}
 			></div>
 			<input
 				className="placeholder-[#9495A5] bg-[transparent] dark:placeholder-[#767992] dark:text-[#767992]"
