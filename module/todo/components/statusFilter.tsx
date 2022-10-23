@@ -68,7 +68,7 @@ const StatusFilter: FunctionComponent = () => {
 	};
 
 	return (
-		<div className="bg-[#fff] p-4 rounded-lg shadow-md">
+		<div className="bg-[#fff] p-4 rounded-lg shadow-md dark:bg-[#25273D]">
 			<div className="flex justify-between max-w-[50%] m-auto">
 				{filter.map((item, index) => renderButton(item, index))}
 			</div>

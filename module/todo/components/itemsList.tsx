@@ -26,13 +26,20 @@ const ItemsList: FunctionComponent = () => {
 	}, [dispatch]);
 
 	return (
-		<ol className="z-50 relative bg-[#fff] rounded-lg shadow-md">
+		<ol className="z-50 relative bg-[#fff] rounded-lg shadow-md dark:bg-[#25273D]">
 			{todo?.map((todo) => (
 				<ItemCard key={todo.uuid} todo={todo} />
 			))}
 			<div className="flex justify-between p-5">
-				<p>{todo?.filter((todo) => !todo.completed).length} items left</p>
-				<button onClick={() => handleClearCompleted()}>Clear completed</button>
+				<p className="text-[#9495A5]">
+					{todo?.filter((todo) => !todo.completed).length} items left
+				</p>
+				<button
+					onClick={() => handleClearCompleted()}
+					className="text-[#9495A5]"
+				>
+					Clear completed
+				</button>
 			</div>
 		</ol>
 	);

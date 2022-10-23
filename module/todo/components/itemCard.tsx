@@ -14,7 +14,7 @@ const ItemCard: FunctionComponent<ItemCardProps> = ({ todo }) => {
 	const dispatch = useAppDispatch();
 
 	const renderStatusButton = useCallback(() => {
-		const defaultStyling = 'w-7 h-7 border rounded-full';
+		const defaultStyling = 'w-7 h-7 border rounded-full border-[#979797]';
 
 		const handleChangeTodoStatus = async () => {
 			try {
@@ -27,7 +27,7 @@ const ItemCard: FunctionComponent<ItemCardProps> = ({ todo }) => {
 		if (todo.completed) {
 			return (
 				<button
-					className="w-7 h-7 border rounded-full bg-[#000]"
+					className="w-7 h-7 rounded-full bg-gradient-to-b from-[#55DDFF] to-[#C058F3]"
 					onClick={() => handleChangeTodoStatus()}
 				>
 					<Image src={IconCross} alt={'IconCross'} width={11} height={9} />
@@ -45,10 +45,10 @@ const ItemCard: FunctionComponent<ItemCardProps> = ({ todo }) => {
 
 	const renderName = useCallback(() => {
 		if (todo.completed) {
-			return <p className="line-through opacity-30">{todo.content}</p>;
+			return <p className="line-through text-[#D1D2DA] dark:text-[#4D5067]">{todo.content}</p>;
 		}
 
-		return <p>{todo.content}</p>;
+		return <p className="text-[#494C6B] dark:text-[#C8CBE7]">{todo.content}</p>;
 	}, [todo.completed]);
 
 	const handleRemoveTodo = async () => {
@@ -60,7 +60,7 @@ const ItemCard: FunctionComponent<ItemCardProps> = ({ todo }) => {
 	};
 
 	return (
-		<div className="flex justify-between items-center p-5 border-b border-b-[hsl(236, 99%, 61%)]">
+		<div className="flex justify-between items-center p-5 border-b border-b-[#E3E4F1] dark:border-[#393A4B]">
 			<div className="flex align-middle gap-4">
 				{renderStatusButton()}
 				{renderName()}

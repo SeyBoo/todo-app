@@ -7,7 +7,7 @@ export const BaseLayout: FunctionComponent<PropsWithChildren> = ({
 	return (
 		<>
 			<Nav />
-			<main className="flex flex-col -mt-20 relative max-w-[90%] m-auto gap-5">
+			<main className="flex flex-col -mt-20 relative max-w-[90%] m-auto gap-5 xl:max-w-[600px]">
 				{children}
 			</main>
 		</>
