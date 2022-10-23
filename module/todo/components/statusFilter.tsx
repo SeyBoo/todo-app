@@ -9,7 +9,7 @@ const StatusFilter: FunctionComponent = () => {
 	const [activeFilter, setActiveFilter] = useState('all');
 
 	const handleLoadAll = useCallback(
-		async (name) => {
+		async (name: string) => {
 			try {
 				await dispatch(loadTodos());
 				setActiveFilter(name);
@@ -21,7 +21,7 @@ const StatusFilter: FunctionComponent = () => {
 	);
 
 	const handleLoadActiveTodo = useCallback(
-		async (name) => {
+		async (name: string) => {
 			try {
 				await dispatch(loadActiveTodo());
 				setActiveFilter(name);
@@ -33,7 +33,7 @@ const StatusFilter: FunctionComponent = () => {
 	);
 
 	const handleLoadCompletedTodo = useCallback(
-		async (name) => {
+		async (name: string) => {
 			try {
 				await dispatch(loadCompletedTodo());
 				setActiveFilter(name);
