@@ -12,8 +12,10 @@ const AddNewToDo: FunctionComponent = () => {
 	const dispatch = useAppDispatch();
 
 	const handleCreateNewTodo = useCallback(
-		async (e: FormEvent<HTMLFormElement>) => {
-			e.preventDefault();
+		async (e?: FormEvent<HTMLFormElement>) => {
+			if (e) {
+				e.preventDefault();
+			}
 
 			if (todo == '') {
 				return;
@@ -36,7 +38,7 @@ const AddNewToDo: FunctionComponent = () => {
 		>
 			<div
 				className="w-7 h-7 border border-[#979797] rounded-full bg-[#fff] dark:bg-[transparent] dark:border-[#393A4B]"
-				onClick={(e) => handleCreateNewTodo(e)}
+				onClick={() => handleCreateNewTodo()}
 			></div>
 			<input
 				className="placeholder-[#9495A5] bg-[transparent] dark:placeholder-[#767992] dark:text-[#767992]"
