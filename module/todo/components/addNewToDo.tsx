@@ -1,45 +1,38 @@
-import React, {
-	FormEvent,
-	FunctionComponent,
-	useCallback,
-	useState,
-} from 'react';
+import React, { FormEvent, FunctionComponent, useState } from 'react';
 import { useAppDispatch } from '../../../common/hooks/useStore';
 import { addNewTodo } from '../store/thunk';
 
 const AddNewToDo: FunctionComponent = () => {
-	const [todo, setTodo] = useState('');
 	const dispatch = useAppDispatch();
+	const [todo, setTodo] = useState('');
 
-	const handleCreateNewTodo = useCallback(
-		async (e?: FormEvent<HTMLFormElement>) => {
-			if (e) {
-				e.preventDefault();
-			}
+	const handleCreateNewTodo = async () => {
+		try {
+			await dispatch(addNewTodo(todo));
+		} catch (e) {
+			console.error(e);
+		}
+	};
 
-			if (todo == '') {
-				return;
-			}
+	const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 
-			try {
-				await dispatch(addNewTodo(todo));
-				setTodo('');
-			} catch (e) {
-				console.error(e);
-			}
-		},
-		[dispatch, setTodo, todo]
-	);
+		if (todo == '') {
+			return;
+		}
+
+		handleCreateNewTodo().then(() => setTodo(''));
+	};
 
 	return (
 		<form
-			onSubmit={(e) => handleCreateNewTodo(e)}
+			onSubmit={(e) => handleSubmitForm(e)}
 			className="flex p-4 gap-4 bg-[#fff] dark:bg-[#25273D] rounded-lg shadow-md"
 		>
-			<div
+			<button
+				type="submit"
 				className="w-7 h-7 border border-[#979797] rounded-full bg-[#fff] dark:bg-[transparent] dark:border-[#393A4B]"
-				onClick={() => handleCreateNewTodo()}
-			></div>
+			></button>
 			<input
 				className="placeholder-[#9495A5] bg-[transparent] dark:placeholder-[#767992] dark:text-[#767992]"
 				type="text"
