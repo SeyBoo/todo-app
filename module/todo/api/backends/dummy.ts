@@ -5,7 +5,7 @@ import { dummyData } from './dummy-data';
 let todoDummy = dummyData;
 
 export default class DummyTodo implements TodoBackend {
-	async loadTodo(): Promise<Todo[]> {
+	async fetchTodo(): Promise<Todo[]> {
 		return todoDummy;
 	}
 
@@ -29,7 +29,7 @@ export default class DummyTodo implements TodoBackend {
 		return todos;
 	}
 
-	async clearCompleted(): Promise<Todo[]> {
+	async clearCompletedTodo(): Promise<Todo[]> {
 		const todos = todoDummy.filter((todo) => !todo.completed);
 
 		todoDummy = todos;

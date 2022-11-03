@@ -1,48 +1,46 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useAppDispatch } from '../../../common/hooks/useStore';
-import { loadActiveTodo, loadCompletedTodo, loadTodos } from '../store/thunk';
+import {
+	fetchActiveTodo,
+	fetchCompletedTodo,
+	fetchTodos,
+} from '../store/thunk';
+
+type filterType = 'all' | 'completed' | 'active';
 
 const StatusFilter: FunctionComponent = () => {
 	const dispatch = useAppDispatch();
+	const [activeFilter, setActiveFilter] = useState<filterType>('all');
+
 	const buttonDefaultStyle = 'text-[#9495A5] dark:text-[#5B5E7E]';
 	const activeButtonStyle = 'text-[#3A7CFD]';
-	const [activeFilter, setActiveFilter] = useState('all');
 
-	const handleLoadAll = useCallback(
-		async (name: string) => {
-			try {
-				await dispatch(loadTodos());
-				setActiveFilter(name);
-			} catch (e) {
-				console.error(e);
-			}
-		},
-		[dispatch]
-	);
+	const handleFetchAll = useCallback(async () => {
+		try {
+			await dispatch(fetchTodos());
+			setActiveFilter('all');
+		} catch (e) {
+			console.error(e);
+		}
+	}, [dispatch]);
 
-	const handleLoadActiveTodo = useCallback(
-		async (name: string) => {
-			try {
-				await dispatch(loadActiveTodo());
-				setActiveFilter(name);
-			} catch (e) {
-				console.error(e);
-			}
-		},
-		[dispatch]
-	);
+	const handleFetchActiveTodo = useCallback(async () => {
+		try {
+			await dispatch(fetchActiveTodo());
+			setActiveFilter('active');
+		} catch (e) {
+			console.error(e);
+		}
+	}, [dispatch]);
 
-	const handleLoadCompletedTodo = useCallback(
-		async (name: string) => {
-			try {
-				await dispatch(loadCompletedTodo());
-				setActiveFilter(name);
-			} catch (e) {
-				console.error(e);
-			}
-		},
-		[dispatch]
-	);
+	const handleFetchCompletedTodo = useCallback(async () => {
+		try {
+			await dispatch(fetchCompletedTodo());
+			setActiveFilter('completed');
+		} catch (e) {
+			console.error(e);
+		}
+	}, [dispatch]);
 
 	return (
 		<div className="bg-[#fff] p-4 rounded-lg shadow-md dark:bg-[#25273D]">
@@ -51,7 +49,7 @@ const StatusFilter: FunctionComponent = () => {
 					className={
 						activeFilter === 'all' ? activeButtonStyle : buttonDefaultStyle
 					}
-					onClick={() => handleLoadAll('all')}
+					onClick={() => handleFetchAll()}
 				>
 					All
 				</button>
@@ -59,15 +57,17 @@ const StatusFilter: FunctionComponent = () => {
 					className={
 						activeFilter === 'active' ? activeButtonStyle : buttonDefaultStyle
 					}
-					onClick={() => handleLoadActiveTodo('active')}
+					onClick={() => handleFetchActiveTodo()}
 				>
 					Active
 				</button>
 				<button
 					className={
-						activeFilter === 'completed' ? activeButtonStyle : buttonDefaultStyle
+						activeFilter === 'completed'
+							? activeButtonStyle
+							: buttonDefaultStyle
 					}
-					onClick={() => handleLoadCompletedTodo('completed')}
+					onClick={() => handleFetchCompletedTodo()}
 				>
 					Completed
 				</button>

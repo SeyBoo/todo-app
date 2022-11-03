@@ -3,9 +3,9 @@ import { getTodoBackend } from '../api';
 import { setTodo } from './reducers';
 import { Todo } from '../../../common/types/todo.interface';
 
-export const loadTodos = (): AppThunk => async (dispatch) => {
+export const fetchTodos = (): AppThunk => async (dispatch) => {
 	const backendInstance = await getTodoBackend();
-	const todo = await backendInstance.loadTodo();
+	const todo = await backendInstance.fetchTodo();
 	await dispatch(setTodo({ todo }));
 };
 
@@ -27,7 +27,7 @@ export const changeTodoStatus =
 
 export const clearCompleted = (): AppThunk => async (dispatch) => {
 	const backendInstance = await getTodoBackend();
-	const todo = await backendInstance.clearCompleted();
+	const todo = await backendInstance.clearCompletedTodo();
 	await dispatch(setTodo({ todo }));
 };
 
@@ -39,16 +39,16 @@ export const addNewTodo =
 			await dispatch(setTodo({ todo }));
 		};
 
-export const loadActiveTodo = (): AppThunk => async (dispatch) => {
+export const fetchActiveTodo = (): AppThunk => async (dispatch) => {
 	const backendInstance = await getTodoBackend();
-	const todo = await backendInstance.loadTodo();
+	const todo = await backendInstance.fetchTodo();
 	const filteredTodo = todo.filter((todo) => !todo.completed);
 	await dispatch(setTodo({ todo: filteredTodo }));
 };
 
-export const loadCompletedTodo = (): AppThunk => async (dispatch) => {
+export const fetchCompletedTodo = (): AppThunk => async (dispatch) => {
 	const backendInstance = await getTodoBackend();
-	const todo = await backendInstance.loadTodo();
+	const todo = await backendInstance.fetchTodo();
 	const filteredTodo = todo.filter((todo) => todo.completed);
 	await dispatch(setTodo({ todo: filteredTodo }));
 };

@@ -12,7 +12,7 @@ const Nav: FunctionComponent = () => {
 	const theme = useTheme();
 	const changeTheme = useChangeTheme();
 
-	const renderButton = useCallback(() => {
+	const renderChangeThemeButton = useCallback(() => {
 		return (
 			<button onClick={() => changeTheme()}>
 				{theme === 'dark' ? (
@@ -31,7 +31,7 @@ const Nav: FunctionComponent = () => {
 					<h1 className="tracking-[12.5px] text-2xl text-[#FFFFFF] font-semibold">
 						TODO
 					</h1>
-					{renderButton()}
+					{renderChangeThemeButton()}
 				</div>
 				<div className="dark:hidden lg:hidden">
 					<Image src={BgMobileLight} layout="responsive" />

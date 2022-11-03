@@ -1,13 +1,13 @@
 import { Todo } from '../../../common/types/todo.interface';
 
 export interface TodoBackend {
-	loadTodo(): Promise<Todo[]>;
+	fetchTodo(): Promise<Todo[]>;
 
 	removeTodo(uuid: string): Promise<Todo[]>;
 
 	changeTodoStatus(currentTodo: Todo): Promise<Todo[]>;
 
-	clearCompleted(): Promise<Todo[]>;
+	clearCompletedTodo(): Promise<Todo[]>;
 
 	addNewTodo(content: string): Promise<Todo[]>;
 }

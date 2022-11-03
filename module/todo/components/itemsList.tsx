@@ -1,21 +1,19 @@
 import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import ItemCard from './itemCard';
 import { useAppDispatch, useAppSelector } from '../../../common/hooks/useStore';
-import { clearCompleted, loadTodos } from '../store/thunk';
+import { clearCompleted, fetchTodos } from '../store/thunk';
 
 const ItemsList: FunctionComponent = () => {
 	const todo = useAppSelector((state) => state.Todo.todo);
 	const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		(async () => {
-			try {
-				await dispatch(loadTodos());
-			} catch (e) {
-				console.error(e);
-			}
-		})();
-	}, []);
+	const handleFetchAllTodos = async () => {
+		try {
+			await dispatch(fetchTodos());
+		} catch (e) {
+			console.error(e);
+		}
+	};
 
 	const handleClearCompleted = useCallback(async () => {
 		try {
@@ -24,6 +22,10 @@ const ItemsList: FunctionComponent = () => {
 			console.error(e);
 		}
 	}, [dispatch]);
+
+	useEffect(() => {
+		(async () => handleFetchAllTodos())();
+	}, []);
 
 	return (
 		<ol className="z-50 relative bg-[#fff] rounded-lg shadow-md dark:bg-[#25273D]">
